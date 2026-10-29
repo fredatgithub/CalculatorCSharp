@@ -1,4 +1,4 @@
-# Calculator# (A Calculator made with C#)#
+# Calculator (A Calculator made with C#)
 
 This is a program I wrote during one of my internships while I was learning C# and Visual Studio. It's essentially the basic-mode Windows calculator re-coded from scratch, with a few scientific functions. There are also unit testing available for NUnit, which is great if you want to try manipulating the code and seeing if you break anything ;) (NUnit is downloaded separately of course, find it on Google)
 

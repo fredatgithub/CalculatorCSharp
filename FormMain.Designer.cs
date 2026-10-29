@@ -111,7 +111,7 @@ namespace Calculator
       this.seven.TabStop = false;
       this.seven.Text = "7";
       this.seven.UseVisualStyleBackColor = true;
-      this.seven.Click += new System.EventHandler(this.number_btn);
+      this.seven.Click += new System.EventHandler(this.Number_btn);
       // 
       // eight
       // 
@@ -124,7 +124,7 @@ namespace Calculator
       this.eight.TabStop = false;
       this.eight.Text = "8";
       this.eight.UseVisualStyleBackColor = true;
-      this.eight.Click += new System.EventHandler(this.number_btn);
+      this.eight.Click += new System.EventHandler(this.Number_btn);
       // 
       // nine
       // 
@@ -137,7 +137,7 @@ namespace Calculator
       this.nine.TabStop = false;
       this.nine.Text = "9";
       this.nine.UseVisualStyleBackColor = true;
-      this.nine.Click += new System.EventHandler(this.number_btn);
+      this.nine.Click += new System.EventHandler(this.Number_btn);
       // 
       // sqrt
       // 
@@ -150,7 +150,7 @@ namespace Calculator
       this.sqrt.TabStop = false;
       this.sqrt.Text = "sqrt";
       this.sqrt.UseVisualStyleBackColor = true;
-      this.sqrt.Click += new System.EventHandler(this.other_btn);
+      this.sqrt.Click += new System.EventHandler(this.Other_btn);
       // 
       // percent
       // 
@@ -163,7 +163,7 @@ namespace Calculator
       this.percent.TabStop = false;
       this.percent.Text = "%";
       this.percent.UseVisualStyleBackColor = true;
-      this.percent.Click += new System.EventHandler(this.other_btn);
+      this.percent.Click += new System.EventHandler(this.Other_btn);
       // 
       // multiply
       // 
@@ -189,7 +189,7 @@ namespace Calculator
       this.six.TabStop = false;
       this.six.Text = "6";
       this.six.UseVisualStyleBackColor = true;
-      this.six.Click += new System.EventHandler(this.number_btn);
+      this.six.Click += new System.EventHandler(this.Number_btn);
       // 
       // five
       // 
@@ -202,7 +202,7 @@ namespace Calculator
       this.five.TabStop = false;
       this.five.Text = "5";
       this.five.UseVisualStyleBackColor = true;
-      this.five.Click += new System.EventHandler(this.number_btn);
+      this.five.Click += new System.EventHandler(this.Number_btn);
       // 
       // four
       // 
@@ -215,7 +215,7 @@ namespace Calculator
       this.four.TabStop = false;
       this.four.Text = "4";
       this.four.UseVisualStyleBackColor = true;
-      this.four.Click += new System.EventHandler(this.number_btn);
+      this.four.Click += new System.EventHandler(this.Number_btn);
       // 
       // inverse
       // 
@@ -228,7 +228,7 @@ namespace Calculator
       this.inverse.TabStop = false;
       this.inverse.Text = "1/x";
       this.inverse.UseVisualStyleBackColor = true;
-      this.inverse.Click += new System.EventHandler(this.other_btn);
+      this.inverse.Click += new System.EventHandler(this.Other_btn);
       // 
       // subtract
       // 
@@ -254,7 +254,7 @@ namespace Calculator
       this.three.TabStop = false;
       this.three.Text = "3";
       this.three.UseVisualStyleBackColor = true;
-      this.three.Click += new System.EventHandler(this.number_btn);
+      this.three.Click += new System.EventHandler(this.Number_btn);
       // 
       // two
       // 
@@ -267,7 +267,7 @@ namespace Calculator
       this.two.TabStop = false;
       this.two.Text = "2";
       this.two.UseVisualStyleBackColor = true;
-      this.two.Click += new System.EventHandler(this.number_btn);
+      this.two.Click += new System.EventHandler(this.Number_btn);
       // 
       // one
       // 
@@ -280,7 +280,7 @@ namespace Calculator
       this.one.TabStop = false;
       this.one.Text = "1";
       this.one.UseVisualStyleBackColor = true;
-      this.one.Click += new System.EventHandler(this.number_btn);
+      this.one.Click += new System.EventHandler(this.Number_btn);
       // 
       // equals
       // 
@@ -293,7 +293,7 @@ namespace Calculator
       this.equals.TabStop = false;
       this.equals.Text = "=";
       this.equals.UseVisualStyleBackColor = true;
-      this.equals.Click += new System.EventHandler(this.equals_btn);
+      this.equals.Click += new System.EventHandler(this.Equals_btn);
       // 
       // add
       // 
@@ -319,7 +319,7 @@ namespace Calculator
       this.decimal_btn.TabStop = false;
       this.decimal_btn.Text = ".";
       this.decimal_btn.UseVisualStyleBackColor = true;
-      this.decimal_btn.Click += new System.EventHandler(this.other_btn);
+      this.decimal_btn.Click += new System.EventHandler(this.Other_btn);
       // 
       // switchSign
       // 
@@ -332,7 +332,7 @@ namespace Calculator
       this.switchSign.TabStop = false;
       this.switchSign.Text = "+/-";
       this.switchSign.UseVisualStyleBackColor = true;
-      this.switchSign.Click += new System.EventHandler(this.other_btn);
+      this.switchSign.Click += new System.EventHandler(this.Other_btn);
       // 
       // zero
       // 
@@ -345,7 +345,7 @@ namespace Calculator
       this.zero.TabStop = false;
       this.zero.Text = "0";
       this.zero.UseVisualStyleBackColor = true;
-      this.zero.Click += new System.EventHandler(this.number_btn);
+      this.zero.Click += new System.EventHandler(this.Number_btn);
       // 
       // memAdd
       // 
@@ -358,7 +358,7 @@ namespace Calculator
       this.memAdd.TabStop = false;
       this.memAdd.Text = "M+";
       this.memAdd.UseVisualStyleBackColor = true;
-      this.memAdd.Click += new System.EventHandler(this.memory_btn);
+      this.memAdd.Click += new System.EventHandler(this.Memory_btn);
       // 
       // memStore
       // 
@@ -371,7 +371,7 @@ namespace Calculator
       this.memStore.TabStop = false;
       this.memStore.Text = "M";
       this.memStore.UseVisualStyleBackColor = true;
-      this.memStore.Click += new System.EventHandler(this.memory_btn);
+      this.memStore.Click += new System.EventHandler(this.Memory_btn);
       // 
       // memRecall
       // 
@@ -384,7 +384,7 @@ namespace Calculator
       this.memRecall.TabStop = false;
       this.memRecall.Text = "MR";
       this.memRecall.UseVisualStyleBackColor = true;
-      this.memRecall.Click += new System.EventHandler(this.memory_btn);
+      this.memRecall.Click += new System.EventHandler(this.Memory_btn);
       // 
       // memClear
       // 
@@ -397,7 +397,7 @@ namespace Calculator
       this.memClear.TabStop = false;
       this.memClear.Text = "MC";
       this.memClear.UseVisualStyleBackColor = true;
-      this.memClear.Click += new System.EventHandler(this.memory_btn);
+      this.memClear.Click += new System.EventHandler(this.Memory_btn);
       // 
       // backspace
       // 
@@ -410,7 +410,7 @@ namespace Calculator
       this.backspace.TabStop = false;
       this.backspace.Text = "Backspace";
       this.backspace.UseVisualStyleBackColor = true;
-      this.backspace.Click += new System.EventHandler(this.other_btn);
+      this.backspace.Click += new System.EventHandler(this.Other_btn);
       // 
       // clear_Entry
       // 
@@ -423,7 +423,7 @@ namespace Calculator
       this.clear_Entry.TabStop = false;
       this.clear_Entry.Text = "CE";
       this.clear_Entry.UseVisualStyleBackColor = true;
-      this.clear_Entry.Click += new System.EventHandler(this.clear_btn);
+      this.clear_Entry.Click += new System.EventHandler(this.Clear_btn);
       // 
       // clear_All
       // 
@@ -436,7 +436,7 @@ namespace Calculator
       this.clear_All.TabStop = false;
       this.clear_All.Text = "C";
       this.clear_All.UseVisualStyleBackColor = true;
-      this.clear_All.Click += new System.EventHandler(this.clear_btn);
+      this.clear_All.Click += new System.EventHandler(this.Clear_btn);
       // 
       // open_paren
       // 
@@ -449,7 +449,7 @@ namespace Calculator
       this.open_paren.TabStop = false;
       this.open_paren.Text = "(";
       this.open_paren.UseVisualStyleBackColor = true;
-      this.open_paren.Click += new System.EventHandler(this.other_btn);
+      this.open_paren.Click += new System.EventHandler(this.Other_btn);
       // 
       // close_paren
       // 
@@ -462,7 +462,7 @@ namespace Calculator
       this.close_paren.TabStop = false;
       this.close_paren.Text = ")";
       this.close_paren.UseVisualStyleBackColor = true;
-      this.close_paren.Click += new System.EventHandler(this.other_btn);
+      this.close_paren.Click += new System.EventHandler(this.Other_btn);
       // 
       // pi
       // 
@@ -534,7 +534,7 @@ namespace Calculator
       this.copy_btn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
       this.copy_btn.Size = new System.Drawing.Size(218, 34);
       this.copy_btn.Text = "Copy";
-      this.copy_btn.Click += new System.EventHandler(this.menu_btn);
+      this.copy_btn.Click += new System.EventHandler(this.Menu_btn);
       // 
       // paste_btn
       // 
@@ -542,7 +542,7 @@ namespace Calculator
       this.paste_btn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
       this.paste_btn.Size = new System.Drawing.Size(218, 34);
       this.paste_btn.Text = "Paste";
-      this.paste_btn.Click += new System.EventHandler(this.menu_btn);
+      this.paste_btn.Click += new System.EventHandler(this.Menu_btn);
       // 
       // viewToolStripMenuItem
       // 
@@ -557,7 +557,7 @@ namespace Calculator
       this.digitGroup.Name = "digitGroup";
       this.digitGroup.Size = new System.Drawing.Size(232, 34);
       this.digitGroup.Text = "Digit Grouping";
-      this.digitGroup.Click += new System.EventHandler(this.menu_btn);
+      this.digitGroup.Click += new System.EventHandler(this.Menu_btn);
       // 
       // about_btn
       // 
@@ -573,14 +573,14 @@ namespace Calculator
       this.helpTopicstoolStripMenuItem.Name = "helpTopicstoolStripMenuItem";
       this.helpTopicstoolStripMenuItem.Size = new System.Drawing.Size(247, 34);
       this.helpTopicstoolStripMenuItem.Text = "Documentation";
-      this.helpTopicstoolStripMenuItem.Click += new System.EventHandler(this.helpPopup);
+      this.helpTopicstoolStripMenuItem.Click += new System.EventHandler(this.HelpPopup);
       // 
       // aboutCalculatorToolStripMenuItem
       // 
       this.aboutCalculatorToolStripMenuItem.Name = "aboutCalculatorToolStripMenuItem";
       this.aboutCalculatorToolStripMenuItem.Size = new System.Drawing.Size(247, 34);
       this.aboutCalculatorToolStripMenuItem.Text = "About Calculator";
-      this.aboutCalculatorToolStripMenuItem.Click += new System.EventHandler(this.about_Popup);
+      this.aboutCalculatorToolStripMenuItem.Click += new System.EventHandler(this.About_Popup);
       // 
       // menuStrip1
       // 

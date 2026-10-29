@@ -23,19 +23,20 @@ namespace Calculator
     private void updateScreen()
     {
       //Updates the text based on the data within the calcEngine
-      calcScreen.Text = formatDisplay(Convert.ToString(calcEngine.GetDisplay()));
+      calcScreen.Text = FormatDisplay(Convert.ToString(calcEngine.GetDisplay()));
     }
 
     //When a key is pressed, the number is checked and we pass that value into the calculator engine
-    private void number_btn(object sender, EventArgs e)
+    private void Number_btn(object sender, EventArgs e)
     {
-      if (sender is System.Windows.Forms.Button)
+      if (sender is Button)
       {
         if (!calcEngine.m_openParen)
         {
           status_txt.Text = "";
         }
-        System.Windows.Forms.Button num = sender as System.Windows.Forms.Button;
+
+        Button num = sender as Button;
         int numValue;
         switch (num.Name)
         { //Convert the System.Windows.Forms.Button pressed into a number which is stored in a string
@@ -60,6 +61,7 @@ namespace Calculator
           default:
             numValue = 0; break;
         }
+
         calcEngine.AppendNum(numValue);
         updateScreen();
         if (calcEngine.m_operation == null)
@@ -70,21 +72,23 @@ namespace Calculator
     }
 
     //The equals button will make some adjustments to the GUI before updating the screen based on values in calcEngine
-    private void equals_btn(object sender, EventArgs e)
+    private void Equals_btn(object sender, EventArgs e)
     {
-      if (sender is System.Windows.Forms.Button)
+      if (sender is Button)
       {
         //First deal with the notes that may  displayed in the status bar at the bottom
         if (!calcEngine.m_openParen)
         {
           status_txt.Text = "";
         }
+
         if (calcEngine.m_openParen)
         {
           status_txt.Text = calcEngine.equation + calcEngine.GetDisplay().ToString();
           paren_txt.Text = "";
           operation_txt.Text = "";
         }
+
         //Attempt to solve the math
         if (!calcEngine.Solve())
         {
@@ -102,11 +106,11 @@ namespace Calculator
     }
 
     //Tell the calculator engine to clear itself
-    private void clear_btn(object sender, EventArgs e)
+    private void Clear_btn(object sender, EventArgs e)
     {
-      if (sender is System.Windows.Forms.Button)
+      if (sender is Button)
       {
-        System.Windows.Forms.Button clear_btn = sender as System.Windows.Forms.Button;
+        Button clear_btn = sender as Button;
         switch (clear_btn.Name)
         {
           case "clear_All":
@@ -131,14 +135,19 @@ namespace Calculator
     //Pass an operation into the calc engine (+, -, *, /) 
     private void operation_btn(object sender, EventArgs e)
     {
-      if (sender is System.Windows.Forms.Button)
+      if (sender is Button)
       {
-        System.Windows.Forms.Button btn_clicked = sender as System.Windows.Forms.Button;
+        Button btn_clicked = sender as Button;
         calcEngine.PrepareOperation(btn_clicked.Name);
         if (calcEngine.m_operation != null)
+        {
           operation_txt.Text = calcEngine.m_operation;
+        }
         else
+        {
           operation_txt.Text = "";
+        }
+
         updateScreen();
         if (calcEngine.m_openParen)
         {
@@ -148,15 +157,16 @@ namespace Calculator
     }
 
     //Updates status text based on what button was pressed, and updates the engine
-    private void memory_btn(object sender, EventArgs e)
+    private void Memory_btn(object sender, EventArgs e)
     {
-      if (sender is System.Windows.Forms.Button && !calcEngine.m_openParen)
+      if (sender is Button && !calcEngine.m_openParen)
       {
         if (!calcEngine.m_openParen)
         {
           status_txt.Text = "";
         }
-        System.Windows.Forms.Button btn_clicked = sender as System.Windows.Forms.Button;
+
+        Button btn_clicked = sender as Button;
         if (btn_clicked.Name.Equals("memClear"))
         {
           if (calcEngine.m_memory == null)
@@ -191,13 +201,14 @@ namespace Calculator
             mem_text.Text = "M";
           }
         }
+
         calcEngine.Memory(btn_clicked.Name);
         updateScreen();
       }
     }
 
     //If a settings button is hit, pass its value into menu_Actions
-    private void menu_btn(object sender, EventArgs e)
+    private void Menu_btn(object sender, EventArgs e)
     {
       if (sender is ToolStripMenuItem)
       {
@@ -205,8 +216,9 @@ namespace Calculator
         {
           status_txt.Text = "";
         }
+
         ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
-        menu_Actions(menuItem.Name);
+        Menu_Actions(menuItem.Name);
         updateScreen();
       }
     }
@@ -214,13 +226,14 @@ namespace Calculator
     //Pass this trig buttons value into the calcEngine
     private void trig_btn(object sender, EventArgs e)
     {
-      if (sender is System.Windows.Forms.Button)
+      if (sender is Button)
       {
         if (!calcEngine.m_openParen)
         {
           status_txt.Text = "";
         }
-        System.Windows.Forms.Button btn_clicked = sender as System.Windows.Forms.Button;
+
+        Button btn_clicked = sender as Button;
         calcEngine.Trig_fcns(btn_clicked.Name);
         updateScreen();
       }
@@ -233,16 +246,17 @@ namespace Calculator
       {
         status_txt.Text = "";
       }
-      if (sender is System.Windows.Forms.Button)
+
+      if (sender is Button)
       {
-        System.Windows.Forms.Button radio_btn = sender as System.Windows.Forms.Button;
-        toggleMode(radio_btn.Name);
+        Button radio_btn = sender as Button;
+        ToggleMode(radio_btn.Name);
         updateScreen();
       }
     }
 
     //Updates the engine angle display mode based on the provided string
-    private void toggleMode(String n)
+    private void ToggleMode(String n)
     {
       switch (n)
       {
@@ -264,19 +278,17 @@ namespace Calculator
             status_txt.Text = "Degree Mode";
           }
           break;
-
       }
-
     }
 
     //Performs some misc function on the calcEngine based on the button that was pressed
     //(Again, everything here is merely updating the screen, but the calcEngine variable holds the true state of things)
-    private void other_btn(object sender, EventArgs e)
+    private void Other_btn(object sender, EventArgs e)
     {
       status_txt.Text = "";
-      if (sender is System.Windows.Forms.Button)
+      if (sender is Button)
       {
-        System.Windows.Forms.Button btn_clicked = sender as System.Windows.Forms.Button;
+        Button btn_clicked = sender as Button;
         if (btn_clicked.Name.Equals("close_paren"))
         {
           if (calcEngine.m_openParen)
@@ -334,19 +346,14 @@ namespace Calculator
             status_txt.Text = "Invalid operation attempted";
           }
         }
+
         calcEngine.Other_fcns(btn_clicked.Name);
         updateScreen();
       }
     }
 
-    //Other functions possible here
-    private void calcScreen_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
     //Show the about menu
-    private void about_Popup(object sender, EventArgs e)
+    private void About_Popup(object sender, EventArgs e)
     {
       popUp.ShowDialog();
     }
@@ -411,7 +418,7 @@ namespace Calculator
     }
 
     //Performs an action based on the given key value
-    private void getKey(Keys k)
+    private void GetKey(Keys k)
     {
       switch (k)
       {
@@ -437,13 +444,13 @@ namespace Calculator
     }
     private void Calculator_KeyDown(object sender, KeyEventArgs e)
     {
-      getKey(e.KeyCode);
+      GetKey(e.KeyCode);
     }
 
     //Format the display based on if commas are on or not
-    private String formatDisplay(String tempstr)
+    private String FormatDisplay(string tempstr)
     {
-      String dec = "";
+      string dec = "";
       int totalCommas = 0;
       int pos = 0;
       bool addNegative = false;
@@ -452,11 +459,13 @@ namespace Calculator
         tempstr = tempstr.Remove(0, 1);
         addNegative = true;
       }
+
       if (tempstr.IndexOf(".") > -1)
       {
         dec = tempstr.Substring(tempstr.IndexOf("."), tempstr.Length - tempstr.IndexOf("."));
         tempstr = tempstr.Remove(tempstr.IndexOf("."), tempstr.Length - tempstr.IndexOf("."));
       }
+
       if (m_useCommaSeparators && Convert.ToDouble(tempstr) < Math.Pow(10, 19))
       {
         if (tempstr.Length > 3)
@@ -466,6 +475,7 @@ namespace Calculator
           {
             totalCommas--;
           }
+
           pos = tempstr.Length - 3;
           while (totalCommas > 0)
           {
@@ -475,11 +485,13 @@ namespace Calculator
           }
         }
       }
+
       tempstr += "" + dec;
       if (tempstr.IndexOf(".") == -1)
       {
         tempstr = tempstr + ".";
       }
+
       if (tempstr.IndexOf(".") == 0)
       {
         tempstr.Insert(0, "0");
@@ -488,15 +500,17 @@ namespace Calculator
       {
         tempstr = tempstr.Remove(tempstr.Length - 1);
       }
+
       if (addNegative)
       {
         tempstr = tempstr.Insert(0, "-");
       }
+
       return tempstr;
     }
 
     //Toggle comma separators
-    private void menu_Actions(String n)
+    private void Menu_Actions(String n)
     {
       switch (n)
       {
@@ -515,6 +529,7 @@ namespace Calculator
             status_txt.Text = "Comma Seperators On";
             updateScreen();
           }
+
           break;
         case "copy_btn":
           Clipboard.SetDataObject(calcEngine.input, true);
@@ -529,10 +544,10 @@ namespace Calculator
             status_txt.Text = "Invalid number in Clipboard";
             break;
           }
+
           calcEngine.input = Clipboard.GetDataObject().GetData(DataFormats.Text).ToString();
           updateScreen();
           break;
-
       }
     }
 
@@ -546,7 +561,7 @@ namespace Calculator
     }
 
     //Used to show the documentation in the user's browser
-    private void helpPopup(object sender, EventArgs e)
+    private void HelpPopup(object sender, EventArgs e)
     {
       string defaultBrowserPath = GetDefaultBrowserPath();
       try
@@ -554,12 +569,10 @@ namespace Calculator
         // launch default browser
         Process.Start(defaultBrowserPath, Path.Combine(Application.StartupPath, @"Documentation.htm"));
       }
-      catch (Exception exp)
+      catch (Exception exception)
       {
-        MessageBox.Show(exp.Message);
+        MessageBox.Show(exception.Message);
       }
-
     }
-
   }
 }

@@ -15,3 +15,8 @@ Free to use in any projects without notifying me, nor is credit needed (though i
 Copyrighted © 2013 by Greg McLeod
 
 GitHub: [https://github.com/cleod9](https://github.com/cleod9)
+
+Copyrighted © 2026 by Freddy Juhel MIT for version 2.0.0+
+
+GitHub: [https://github.com/fredatgithub](https://github.com/fredatgithub/CalculatorCSharp)
+

@@ -356,6 +356,7 @@ namespace Calculator
           m_lastHitEquals = false; break;
       }
     }
+
     public static double GetDisplay()
     {
       return Convert.ToDouble(FormatInput(m_input));
@@ -381,6 +382,7 @@ namespace Calculator
           {
             m_lastInput = "" + FormatInput(m_input);
           }
+
           //We take the previous number value and perform an operation with the current value
           string answer = "";
           switch (m_operation)

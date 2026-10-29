@@ -373,11 +373,15 @@ namespace Calculator
         {
           //Clean up
           if (m_input.Equals(""))
+          {
             m_input = "0";
+          }
+
           if (m_lastNum == null || m_lastNum.Equals(""))
           {
             m_lastNum = "0.0";
           }
+
           if (!m_wait)
           {
             m_lastInput = "" + FormatInput(m_input);

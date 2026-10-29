@@ -92,9 +92,9 @@ namespace Calculator
       this.labelProductName.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
       this.labelProductName.MaximumSize = new System.Drawing.Size(0, 26);
       this.labelProductName.Name = "labelProductName";
-      this.labelProductName.Size = new System.Drawing.Size(492, 26);
+      this.labelProductName.Size = new System.Drawing.Size(738, 39);
       this.labelProductName.TabIndex = 19;
-      this.labelProductName.Text = "Calculator #";
+      this.labelProductName.Text = "Calculator";
       this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // labelVersion
@@ -104,9 +104,9 @@ namespace Calculator
       this.labelVersion.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
       this.labelVersion.MaximumSize = new System.Drawing.Size(0, 26);
       this.labelVersion.Name = "labelVersion";
-      this.labelVersion.Size = new System.Drawing.Size(492, 26);
+      this.labelVersion.Size = new System.Drawing.Size(738, 39);
       this.labelVersion.TabIndex = 0;
-      this.labelVersion.Text = "Version 1.2";
+      this.labelVersion.Text = "Version 2.0.0";
       this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // labelCopyright
@@ -116,9 +116,9 @@ namespace Calculator
       this.labelCopyright.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
       this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 26);
       this.labelCopyright.Name = "labelCopyright";
-      this.labelCopyright.Size = new System.Drawing.Size(492, 26);
+      this.labelCopyright.Size = new System.Drawing.Size(738, 39);
       this.labelCopyright.TabIndex = 21;
-      this.labelCopyright.Text = "Copyright © 2007";
+      this.labelCopyright.Text = "Copyright © 2007-2026";
       this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // labelCompanyName
@@ -128,9 +128,9 @@ namespace Calculator
       this.labelCompanyName.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
       this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 26);
       this.labelCompanyName.Name = "labelCompanyName";
-      this.labelCompanyName.Size = new System.Drawing.Size(492, 26);
+      this.labelCompanyName.Size = new System.Drawing.Size(738, 39);
       this.labelCompanyName.TabIndex = 22;
-      this.labelCompanyName.Text = "McLeodGaming Inc.";
+      this.labelCompanyName.Text = "McLeodGaming Inc. and Freddy Juhel (2026)";
       this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // textBoxDescription

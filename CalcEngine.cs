@@ -68,26 +68,29 @@ namespace Calculator
 
 
     //Formats the input into a valid double format
-    private static String formatInput(String n)
+    private static string FormatInput(string n)
     {
       //Format the input to something convertable by Convert.toDouble
       if (n.IndexOf(".") == 0) //Prepend a Zero if the string begins with a "."
       {
         n = "0" + n;
       }
+
       if (n.IndexOf(".") == n.Length - 1) //Appened a Zero if the string ends with a "."
       {
         n = n + "0";
       }
+
       if (m_sign.Equals("-") && n != "0.0" && n.IndexOf("-") == -1) //If negative is turned on and there's no "-" in the current string, then "-" is prepended
       {
         n = "-" + n;
       }
+
       return n;
     }
 
     //Appends number to the input
-    public static void appendNum(double numValue)
+    public static void AppendNum(double numValue)
     {
       if (numValue == Math.Round(numValue) && numValue >= 0)
       {
@@ -109,6 +112,7 @@ namespace Calculator
             clearAll();
             m_lastHitEquals = false;
           }
+
           if (m_decimal)
           {
             m_input = "." + numValue;
@@ -132,17 +136,20 @@ namespace Calculator
           clearAll();
           m_lastHitEquals = false;
         }
+
         m_input = "" + numValue;
         //Reformat first
-        m_input = formatInput(m_input);
+        m_input = FormatInput(m_input);
         if (!m_input.Contains("."))
         {
           m_input += ".";
         }
+
         if (m_input.Contains(".") && !(m_input.EndsWith("0") && m_input.IndexOf(".") == m_input.Length - 2))
         {
           m_decimal = true;
         }
+
         if (m_input.Contains("-"))
         {
           m_sign = "-";
@@ -151,21 +158,24 @@ namespace Calculator
         {
           m_sign = "+";
         }
+
         //Get rid of any extra zeroes that may have been prepended or appended
         if (m_input.IndexOf("0", 0, 1) == 0 && m_input.IndexOf(".") > 1)
         {
           m_input = m_input.Remove(0, 1);
         }
+
         if (m_input.EndsWith("0") && m_input.IndexOf(".") == m_input.Length - 2)
         {
           m_input.Remove(m_input.Length - 1);
         }
+
         m_wait = false;
       }
     }
 
     //Handles operation functions
-    public static void prepareOperation(String operationType)
+    public static void PrepareOperation(string operationType)
     {
       switch (operationType) //All operator buttons perform in the same manner so I won't go into too much detail
       {
@@ -177,7 +187,7 @@ namespace Calculator
               if (m_lastNum != null && !m_operation.Equals("+") && !m_lastHitEquals && !m_wait)
                 Solve();
               m_operation = "+";
-              m_lastNum = "" + formatInput(m_input);
+              m_lastNum = "" + FormatInput(m_input);
               m_sign = "+";
               m_decimal = false;
               m_wait = true;
@@ -205,7 +215,7 @@ namespace Calculator
               }
               else
               {
-                m_equation += formatInput(m_input) + "+";
+                m_equation += FormatInput(m_input) + "+";
               }
               m_decimal = false;
               m_wait = true;
@@ -220,7 +230,7 @@ namespace Calculator
               if (m_lastNum != null && !m_operation.Equals("-") && !m_lastHitEquals && !m_wait)
                 Solve();
               m_operation = "-";
-              m_lastNum = "" + formatInput(m_input);
+              m_lastNum = "" + FormatInput(m_input);
               m_sign = "+";
               m_decimal = false;
               m_wait = true;
@@ -248,8 +258,9 @@ namespace Calculator
               }
               else
               {
-                m_equation += formatInput(m_input) + "-";
+                m_equation += FormatInput(m_input) + "-";
               }
+
               m_decimal = false;
               m_wait = true;
             }
@@ -263,7 +274,7 @@ namespace Calculator
               if (m_lastNum != null && !m_operation.Equals("*") && !m_lastHitEquals && !m_wait)
                 Solve();
               m_operation = "*";
-              m_lastNum = "" + formatInput(m_input);
+              m_lastNum = "" + FormatInput(m_input);
               m_sign = "+";
               m_decimal = false;
               m_wait = true;
@@ -291,7 +302,7 @@ namespace Calculator
               }
               else
               {
-                m_equation += formatInput(m_input) + "*";
+                m_equation += FormatInput(m_input) + "*";
               }
               m_decimal = false;
               m_wait = true;
@@ -306,7 +317,7 @@ namespace Calculator
               if (m_lastNum != null && !m_operation.Equals("/") && !m_lastHitEquals)
                 Solve();
               m_operation = "/";
-              m_lastNum = "" + formatInput(m_input);
+              m_lastNum = "" + FormatInput(m_input);
               m_sign = "+";
               m_decimal = false;
               m_wait = true;
@@ -335,18 +346,19 @@ namespace Calculator
               }
               else
               {
-                m_equation += formatInput(m_input) + "/";
+                m_equation += FormatInput(m_input) + "/";
               }
               m_decimal = false;
               m_wait = true;
             }
           }
+
           m_lastHitEquals = false; break;
       }
     }
     public static double GetDisplay()
     {
-      return Convert.ToDouble(formatInput(m_input));
+      return Convert.ToDouble(FormatInput(m_input));
     }
 
     //Solve the currently stored expression
@@ -367,10 +379,10 @@ namespace Calculator
           }
           if (!m_wait)
           {
-            m_lastInput = "" + formatInput(m_input);
+            m_lastInput = "" + FormatInput(m_input);
           }
           //We take the previous number value and perform an operation with the current value
-          String answer = "";
+          string answer = "";
           switch (m_operation)
           {
             case "+":
@@ -383,7 +395,7 @@ namespace Calculator
               answer = "" + Convert.ToString(Convert.ToDouble(m_lastNum) * Convert.ToDouble(m_lastInput));
               break;
             case "/":
-              if (!formatInput(m_lastInput).Equals("0.0"))
+              if (!FormatInput(m_lastInput).Equals("0.0"))
               {
                 answer = "" + Convert.ToString(Convert.ToDouble(m_lastNum) / Convert.ToDouble(m_lastInput));
               }
@@ -406,6 +418,7 @@ namespace Calculator
             canSolve = true;
           }
         }
+
         return canSolve;
       }
       else
@@ -417,12 +430,13 @@ namespace Calculator
           m_closeParen = true;
           if (!m_wait)
           {
-            m_equation += "" + formatInput(m_input);
+            m_equation += "" + FormatInput(m_input);
           }
           else
           {
             m_equation = m_equation.Remove(m_equation.Length - 1, 1);
           }
+
           m_input = SolveString(m_equation);
           m_operation = null;
           m_equation = "";
@@ -433,6 +447,7 @@ namespace Calculator
           m_openParen = false;
           m_closeParen = true;
         }
+
         m_wait = true;
         m_lastHitEquals = true;
         return canSolve;
@@ -440,9 +455,9 @@ namespace Calculator
     }
 
     //Perform a trig function on the current input
-    public static void trig_fcns(string n)
+    public static void Trig_fcns(string number)
     {
-      switch (n)
+      switch (number)
       {
         case "sin":
           if (m_useRadians)
@@ -487,10 +502,10 @@ namespace Calculator
     }
 
     //Handles decimal square roots, decimal buttons, percents, inverse, backspaces, and sign switching
-    public static bool Other_fcns(String n)
+    public static bool Other_fcns(string number)
     {
       bool success = false;
-      switch (n)
+      switch (number)
       {
         case "sqrt":
           if (!m_sign.Equals("-"))
@@ -502,6 +517,7 @@ namespace Calculator
           {
             success = false;
           }
+
           break;
         case "percent":
           if (m_lastNum != null && !m_openParen)
@@ -521,6 +537,7 @@ namespace Calculator
                 m_input = Convert.ToString(Convert.ToDouble(m_lastNum) * (Convert.ToDouble(m_input) / 100));
                 break;
             }
+
             success = true;
           }
           else
@@ -528,6 +545,7 @@ namespace Calculator
 
             success = false;
           }
+
           break;
         case "inverse":
           if (Convert.ToDouble(m_input) != 0)
@@ -544,6 +562,7 @@ namespace Calculator
             //Can't inverse Zero.
             success = false;
           }
+
           break;
         case "backspace":
           if (!m_input.Equals(".") && !m_wait)
@@ -595,6 +614,7 @@ namespace Calculator
             //Parentheses already opened
             success = false;
           }
+
           break;
         case "close_paren":
           if (!m_closeParen)
@@ -605,7 +625,7 @@ namespace Calculator
               m_closeParen = true;
               if (!m_wait)
               {
-                m_equation += "" + formatInput(m_input);
+                m_equation += "" + FormatInput(m_input);
               }
               else
               {
@@ -621,6 +641,7 @@ namespace Calculator
               m_openParen = false;
               m_closeParen = true;
             }
+
             m_wait = true;
             m_lastHitEquals = true;
             success = true;
@@ -630,6 +651,7 @@ namespace Calculator
             //You must open the parentheses first
             success = false;
           }
+
           break;
         case "switchSign":
           if (!m_wait && !m_input.Equals("."))
@@ -664,15 +686,16 @@ namespace Calculator
           {
             success = false;
           }
+
           break;
       }
       return success;
     }
 
     //Handles memory storage functions
-    public static void Memory(String n)
+    public static void Memory(string number)
     {
-      switch (n)
+      switch (number)
       {
         case "memClear":
           m_memory = null; break;
@@ -703,10 +726,10 @@ namespace Calculator
     }
 
     //The built in version didn't work right for some reason, so I made my own
-    public static int LastIndexOfAny(String s, char[] c, int start, int maxcount)
+    public static int LastIndexOfAny(string s, char[] c, int start, int maxcount)
     {
       int lastPos = 0;
-      int count = 0;
+      int count;
       foreach (char j in c)
       {
         count = 0;
@@ -716,14 +739,16 @@ namespace Calculator
           {
             lastPos = i;
           }
+
           count++;
         }
       }
+
       return lastPos;
     }
 
     //Get or set the current input
-    public static String input
+    public static string input
     {
       get
       {
@@ -737,7 +762,7 @@ namespace Calculator
     }
 
     //Getter
-    public static String equation
+    public static string equation
     {
       get
       {
@@ -747,7 +772,7 @@ namespace Calculator
 
     //This function parses a string of numbers and operations and treats it as a single level of order of operations (no nested parentheses)
     //-It essentially just performs the multiplication/divided operations on the first pass condensing the string as it goes, and on the second pass it does addition/subtraction
-    private static string SolveString(String equation)
+    private static string SolveString(string equation)
     {
       Stack<double> total = new Stack<double>();
       char[] symbol = { '+', '-', '*', '/' };
@@ -812,10 +837,12 @@ namespace Calculator
         {
           answer = Convert.ToString(num1 / num2);
         }
+
         if (answer.IndexOf("-") > -1)
         {
           answer = answer.Replace("-", "!");
         }
+
         if (answer.IndexOf("-") > -1)
         {
           answer = answer.Replace("-", "!");
@@ -858,20 +885,19 @@ namespace Calculator
         }
 
       }
+
       while (total.Count > 0)
       {
         numBuffer += total.Pop();
       }
+
       return Convert.ToString(numBuffer);
     }
 
     //Test to see if the engine is waiting for the user to enter a number (Test if no input)
     private static bool IsEmpty()
     {
-      if ((m_input.Equals(".")) || m_wait)
-        return true;
-      else
-        return false;
+      return m_input.Equals(".") || m_wait;
     }
 
     //Make sure the calculator is indeed cleared (a bit hacky but it's useful for test cases)

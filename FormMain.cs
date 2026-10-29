@@ -60,7 +60,7 @@ namespace Calculator
           default:
             numValue = 0; break;
         }
-        calcEngine.appendNum(numValue);
+        calcEngine.AppendNum(numValue);
         updateScreen();
         if (calcEngine.m_operation == null)
         {
@@ -134,7 +134,7 @@ namespace Calculator
       if (sender is System.Windows.Forms.Button)
       {
         System.Windows.Forms.Button btn_clicked = sender as System.Windows.Forms.Button;
-        calcEngine.prepareOperation(btn_clicked.Name);
+        calcEngine.PrepareOperation(btn_clicked.Name);
         if (calcEngine.m_operation != null)
           operation_txt.Text = calcEngine.m_operation;
         else
@@ -221,7 +221,7 @@ namespace Calculator
           status_txt.Text = "";
         }
         System.Windows.Forms.Button btn_clicked = sender as System.Windows.Forms.Button;
-        calcEngine.trig_fcns(btn_clicked.Name);
+        calcEngine.Trig_fcns(btn_clicked.Name);
         updateScreen();
       }
     }

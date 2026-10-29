@@ -261,9 +261,9 @@
 </value>
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>Created by Greg McLeod
+    <value>Created by Greg McLeod and corrected by Freddy Juhel. 
 
-This is Version 1.2 of Calculator #. This program is based off of the standard settings on the Windows calculator, but includes a few scientific calculator features.
+This is Version 2.0.0 of Calculator. This program is based off of the standard settings on the Windows calculator, but includes a few scientific calculator features.
 
  Enjoy!</value>
   </data>

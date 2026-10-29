@@ -15,7 +15,7 @@ namespace Calculator
       clearCalcEngine();
       for (int i = 9; i >= 0; i--)
       {
-        calcEngine.appendNum(i);
+        calcEngine.AppendNum(i);
         Assert.Equals(i, calcEngine.GetDisplay());
         clearCalcEngine();
       }
@@ -27,7 +27,7 @@ namespace Calculator
       clearCalcEngine();
       for (int i = 9; i >= 0; i--)
       {
-        calcEngine.appendNum(i);
+        calcEngine.AppendNum(i);
       }
       Assert.Equals(9876543210, calcEngine.GetDisplay());
       clearCalcEngine();
@@ -37,11 +37,11 @@ namespace Calculator
     public void AppendDigit_decimal()
     {
       clearCalcEngine();
-      calcEngine.appendNum(8);
-      calcEngine.appendNum(4);
+      calcEngine.AppendNum(8);
+      calcEngine.AppendNum(4);
       calcEngine.Other_fcns("decimal");
-      calcEngine.appendNum(2);
-      calcEngine.appendNum(5);
+      calcEngine.AppendNum(2);
+      calcEngine.AppendNum(5);
       Assert.Equals(84.25, calcEngine.GetDisplay());
       clearCalcEngine();
     }
@@ -50,12 +50,12 @@ namespace Calculator
     public void appendNum_multiple()
     {
       clearCalcEngine();
-      calcEngine.appendNum(829);
+      calcEngine.AppendNum(829);
       Assert.Equals(829, calcEngine.GetDisplay());
-      calcEngine.appendNum(204);
+      calcEngine.AppendNum(204);
       Assert.Equals(829204, calcEngine.GetDisplay());
       clearCalcEngine();
-      calcEngine.appendNum(5392.634);
+      calcEngine.AppendNum(5392.634);
       Assert.Equals(5392.634, calcEngine.GetDisplay());
       clearCalcEngine();
     }
@@ -65,29 +65,29 @@ namespace Calculator
     {
       clearCalcEngine();
       //Try doing two decimals at once
-      calcEngine.appendNum(84.523);
+      calcEngine.AppendNum(84.523);
       Assert.Equals(84.523, calcEngine.GetDisplay());
-      calcEngine.appendNum(678.935); //Should replae the other one
+      calcEngine.AppendNum(678.935); //Should replae the other one
       Assert.Equals(678.935, calcEngine.GetDisplay());
       clearCalcEngine();
       //Now try agian after doing a normal append
-      calcEngine.appendNum(8);
-      calcEngine.appendNum(4);
+      calcEngine.AppendNum(8);
+      calcEngine.AppendNum(4);
       calcEngine.Other_fcns("decimal");
-      calcEngine.appendNum(2);
-      calcEngine.appendNum(5);
+      calcEngine.AppendNum(2);
+      calcEngine.AppendNum(5);
       Assert.Equals(84.25, calcEngine.GetDisplay());
-      calcEngine.appendNum(678.935); //Should replae the other one
+      calcEngine.AppendNum(678.935); //Should replae the other one
       Assert.Equals(678.935, calcEngine.GetDisplay());
       clearCalcEngine();
       //Now try doing before a normal append (should just append to decimal)
-      calcEngine.appendNum(678.935); //Should replae the other one
+      calcEngine.AppendNum(678.935); //Should replae the other one
       Assert.Equals(678.935, calcEngine.GetDisplay());
-      calcEngine.appendNum(8);
-      calcEngine.appendNum(4);
+      calcEngine.AppendNum(8);
+      calcEngine.AppendNum(4);
       calcEngine.Other_fcns("decimal");
-      calcEngine.appendNum(2);
-      calcEngine.appendNum(5);
+      calcEngine.AppendNum(2);
+      calcEngine.AppendNum(5);
       Assert.Equals(678.9358425, calcEngine.GetDisplay());
       clearCalcEngine();
     }
@@ -106,13 +106,13 @@ namespace Calculator
     public void ClearAll()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(34.223);
-      calcEngine.prepareOperation("+");
+      calcEngine.AppendNum(34.223);
+      calcEngine.PrepareOperation("+");
       calcEngine.Other_fcns("switchSign");
       ClearCalcEngine();
       calcEngine.Other_fcns("open_paren");
-      calcEngine.appendNum(34.223);
-      calcEngine.prepareOperation("add");
+      calcEngine.AppendNum(34.223);
+      calcEngine.PrepareOperation("add");
       ClearCalcEngine();
     }
 
@@ -120,7 +120,7 @@ namespace Calculator
     public void StoreMemory()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(526.42);
+      calcEngine.AppendNum(526.42);
       calcEngine.Memory("memStore");
       Assert.Equals(true, 526.42 - Math.Abs(Convert.ToDouble(calcEngine.m_memory)) < 0.000000001);
       ClearCalcEngine();
@@ -130,7 +130,7 @@ namespace Calculator
     public void RecallMemory()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(526.42);
+      calcEngine.AppendNum(526.42);
       calcEngine.Memory("memStore");
       ClearCalcEngine();
       calcEngine.Memory("memRecall");
@@ -142,13 +142,13 @@ namespace Calculator
     public void SumToMemory()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(526.42);
+      calcEngine.AppendNum(526.42);
       calcEngine.Memory("memStore");
       ClearCalcEngine();
       calcEngine.Memory("memRecall");
       Assert.Equals(true, 526.42 - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       ClearCalcEngine();
-      calcEngine.appendNum(35.56);
+      calcEngine.AppendNum(35.56);
       calcEngine.Memory("memAdd");
       Assert.Equals(true, (526.42 + 35.56) - (Convert.ToDouble(calcEngine.m_memory) + calcEngine.GetDisplay()) < 0.000000001);
       ClearCalcEngine();
@@ -158,7 +158,7 @@ namespace Calculator
     public void ClearMemory()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(526.42);
+      calcEngine.AppendNum(526.42);
       calcEngine.Memory("memStore");
       ClearCalcEngine();
       Assert.Equals(true, 526.42 - Math.Abs(Convert.ToDouble(calcEngine.m_memory)) < 0.000000001);
@@ -183,15 +183,15 @@ namespace Calculator
       clearCalcEngine();
       calcEngine.m_useRadians = true;
       Assert.Equals(true, calcEngine.m_useRadians);
-      calcEngine.appendNum(55);
-      calcEngine.trig_fcns("sin");
+      calcEngine.AppendNum(55);
+      calcEngine.Trig_fcns("sin");
       Assert.Equals(true, Math.Sin(55) - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
       clearCalcEngine();
       calcEngine.m_useRadians = false;
       Assert.Equals(false, calcEngine.m_useRadians);
-      calcEngine.appendNum(55);
-      calcEngine.trig_fcns("sin");
+      calcEngine.AppendNum(55);
+      calcEngine.Trig_fcns("sin");
       Assert.Equals(true, Math.Sin(55 * Math.PI / 180) - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
     }
@@ -202,15 +202,15 @@ namespace Calculator
       clearCalcEngine();
       calcEngine.m_useRadians = true;
       Assert.Equals(true, calcEngine.m_useRadians);
-      calcEngine.appendNum(55);
-      calcEngine.trig_fcns("cos");
+      calcEngine.AppendNum(55);
+      calcEngine.Trig_fcns("cos");
       Assert.Equals(true, Math.Cos(55) - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
       clearCalcEngine();
       calcEngine.m_useRadians = false;
       Assert.Equals(false, calcEngine.m_useRadians);
-      calcEngine.appendNum(55);
-      calcEngine.trig_fcns("cos");
+      calcEngine.AppendNum(55);
+      calcEngine.Trig_fcns("cos");
       Assert.Equals(true, Math.Cos(55 * Math.PI / 180) - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
     }
@@ -221,15 +221,15 @@ namespace Calculator
       clearCalcEngine();
       calcEngine.m_useRadians = true;
       Assert.Equals(true, calcEngine.m_useRadians);
-      calcEngine.appendNum(55);
-      calcEngine.trig_fcns("tan");
+      calcEngine.AppendNum(55);
+      calcEngine.Trig_fcns("tan");
       Assert.Equals(true, Math.Tan(55) - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
       clearCalcEngine();
       calcEngine.m_useRadians = false;
       Assert.Equals(false, calcEngine.m_useRadians);
-      calcEngine.appendNum(55);
-      calcEngine.trig_fcns("tan");
+      calcEngine.AppendNum(55);
+      calcEngine.Trig_fcns("tan");
       Assert.Equals(true, Math.Tan(55 * Math.PI / 180) - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
     }
@@ -238,10 +238,10 @@ namespace Calculator
     public void Trig_PI()
     {
       clearCalcEngine();
-      calcEngine.trig_fcns("pi");
+      calcEngine.Trig_fcns("pi");
       Assert.Equals(true, Math.PI - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
-      calcEngine.appendNum(234);
+      calcEngine.AppendNum(234);
       Assert.Equals(true, Math.PI - Math.Abs(calcEngine.GetDisplay()) < 0.000000001);
       clearCalcEngine();
     }
@@ -263,44 +263,44 @@ namespace Calculator
     public void Math_ADD()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(83);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(17);
+      calcEngine.AppendNum(83);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(17);
       calcEngine.Solve();
       Assert.Equals(100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(117, calcEngine.GetDisplay());
       //If you don't hit the add button again after hitting '=', then it assumes you're typing a new number
-      calcEngine.prepareOperation("add");
+      calcEngine.PrepareOperation("add");
       //Now you may append a numbers
-      calcEngine.appendNum(3);
-      calcEngine.prepareOperation("subtract");
+      calcEngine.AppendNum(3);
+      calcEngine.PrepareOperation("subtract");
       //Make sure display got updated after changing operation
       Assert.Equals(120, calcEngine.GetDisplay());
       ClearCalcEngine();
       //Now try every combination of negative values
       //-+
-      calcEngine.appendNum(-83);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(13);
+      calcEngine.AppendNum(-83);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(13);
       calcEngine.Solve();
       Assert.Equals(-70, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(-57, calcEngine.GetDisplay());
       ClearCalcEngine();
       //+-
-      calcEngine.appendNum(83);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(-13);
+      calcEngine.AppendNum(83);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(-13);
       calcEngine.Solve();
       Assert.Equals(70, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(57, calcEngine.GetDisplay());
       ClearCalcEngine();
       //--
-      calcEngine.appendNum(-83);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(-17);
+      calcEngine.AppendNum(-83);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(-17);
       calcEngine.Solve();
       Assert.Equals(-100, calcEngine.GetDisplay());
       calcEngine.Solve();
@@ -312,40 +312,40 @@ namespace Calculator
     public void Math_SUBTRACT()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(83);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(3);
+      calcEngine.AppendNum(83);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(3);
       calcEngine.Solve();
       Assert.Equals(80, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(77, calcEngine.GetDisplay());
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(7);
-      calcEngine.prepareOperation("add");
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(7);
+      calcEngine.PrepareOperation("add");
       Assert.Equals(70, calcEngine.GetDisplay());
       ClearCalcEngine();
       //-+
-      calcEngine.appendNum(-83);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(17);
+      calcEngine.AppendNum(-83);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(17);
       calcEngine.Solve();
       Assert.Equals(-100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(-117, calcEngine.GetDisplay());
       ClearCalcEngine();
       //+-
-      calcEngine.appendNum(83);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(-17);
+      calcEngine.AppendNum(83);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(-17);
       calcEngine.Solve();
       Assert.Equals(100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(117, calcEngine.GetDisplay());
       ClearCalcEngine();
       //--
-      calcEngine.appendNum(-83);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(-13);
+      calcEngine.AppendNum(-83);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(-13);
       calcEngine.Solve();
       Assert.Equals(-70, calcEngine.GetDisplay());
       calcEngine.Solve();
@@ -357,40 +357,40 @@ namespace Calculator
     public void math_MULTIPLY()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(10);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(5);
+      calcEngine.AppendNum(10);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(5);
       calcEngine.Solve();
       Assert.Equals(50, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(250, calcEngine.GetDisplay());
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(2);
-      calcEngine.prepareOperation("divide");
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(2);
+      calcEngine.PrepareOperation("divide");
       Assert.Equals(500, calcEngine.GetDisplay());
       ClearCalcEngine();
       //-+
-      calcEngine.appendNum(-20);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(5);
+      calcEngine.AppendNum(-20);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(5);
       calcEngine.Solve();
       Assert.Equals(-100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(-500, calcEngine.GetDisplay());
       ClearCalcEngine();
       //+-
-      calcEngine.appendNum(20);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(-5);
+      calcEngine.AppendNum(20);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(-5);
       calcEngine.Solve();
       Assert.Equals(-100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(500, calcEngine.GetDisplay());
       ClearCalcEngine();
       //--
-      calcEngine.appendNum(-20);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(-5);
+      calcEngine.AppendNum(-20);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(-5);
       calcEngine.Solve();
       Assert.Equals(100, calcEngine.GetDisplay());
       calcEngine.Solve();
@@ -402,49 +402,49 @@ namespace Calculator
     public void Math_DIVIDE()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(500);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(2);
+      calcEngine.AppendNum(500);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(2);
       calcEngine.Solve();
       Assert.Equals(250, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(125, calcEngine.GetDisplay());
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(0.5);
-      calcEngine.prepareOperation("multiply");
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(0.5);
+      calcEngine.PrepareOperation("multiply");
       Assert.Equals(250, calcEngine.GetDisplay());
       ClearCalcEngine();
       //-+
-      calcEngine.appendNum(-500);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(5);
+      calcEngine.AppendNum(-500);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(5);
       calcEngine.Solve();
       Assert.Equals(-100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(-20, calcEngine.GetDisplay());
       ClearCalcEngine();
       //+-
-      calcEngine.appendNum(500);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(-5);
+      calcEngine.AppendNum(500);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(-5);
       calcEngine.Solve();
       Assert.Equals(-100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(20, calcEngine.GetDisplay());
       ClearCalcEngine();
       //--
-      calcEngine.appendNum(-500);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(-5);
+      calcEngine.AppendNum(-500);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(-5);
       calcEngine.Solve();
       Assert.Equals(100, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(-20, calcEngine.GetDisplay());
       ClearCalcEngine();
       //Check divide by Zero
-      calcEngine.appendNum(5);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(0);
+      calcEngine.AppendNum(5);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(0);
       Assert.Equals(false, calcEngine.Solve());
     }
 
@@ -452,27 +452,27 @@ namespace Calculator
     public void Math_DIF_OPERATIONS()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(3);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(5);
-      calcEngine.prepareOperation("multiply");
+      calcEngine.AppendNum(3);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(5);
+      calcEngine.PrepareOperation("multiply");
       Assert.Equals(8, calcEngine.GetDisplay());
-      calcEngine.appendNum(3);
+      calcEngine.AppendNum(3);
       calcEngine.Solve();
       Assert.Equals(24, calcEngine.GetDisplay());
-      calcEngine.prepareOperation("divide");
+      calcEngine.PrepareOperation("divide");
       Assert.Equals(24, calcEngine.GetDisplay());
-      calcEngine.appendNum(6);
-      calcEngine.prepareOperation("subtract");
+      calcEngine.AppendNum(6);
+      calcEngine.PrepareOperation("subtract");
       Assert.Equals(4, calcEngine.GetDisplay());
-      calcEngine.appendNum(1.5);
+      calcEngine.AppendNum(1.5);
       calcEngine.Solve();
       Assert.Equals(2.5, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(1, calcEngine.GetDisplay());
-      calcEngine.prepareOperation("add");
+      calcEngine.PrepareOperation("add");
       Assert.Equals(1, calcEngine.GetDisplay());
-      calcEngine.appendNum(-3);
+      calcEngine.AppendNum(-3);
       calcEngine.Solve();
       Assert.Equals(-2, calcEngine.GetDisplay());
       calcEngine.Solve();
@@ -494,13 +494,13 @@ namespace Calculator
     public void Misc_SQRT()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(25);
+      calcEngine.AppendNum(25);
       calcEngine.Other_fcns("sqrt");
       Assert.Equals(5, calcEngine.GetDisplay());
       calcEngine.Other_fcns("sqrt");
       Assert.Equals(Math.Sqrt(5), calcEngine.GetDisplay());
       ClearCalcEngine();
-      calcEngine.appendNum(-3);
+      calcEngine.AppendNum(-3);
       Assert.Equals(false, calcEngine.Other_fcns("sqrt"));
       ClearCalcEngine();
     }
@@ -510,27 +510,27 @@ namespace Calculator
     {
       //(+)
       ClearCalcEngine();
-      calcEngine.appendNum(50);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(25);
+      calcEngine.AppendNum(50);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(25);
       calcEngine.Other_fcns("percent");
       Assert.Equals(12.5, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(62.5, calcEngine.GetDisplay());
       //(-)
       ClearCalcEngine();
-      calcEngine.appendNum(50);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(25);
+      calcEngine.AppendNum(50);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(25);
       calcEngine.Other_fcns("percent");
       Assert.Equals(12.5, calcEngine.GetDisplay());
       calcEngine.Solve();
       Assert.Equals(37.5, calcEngine.GetDisplay());
       //(*)
       ClearCalcEngine();
-      calcEngine.appendNum(50);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(25);
+      calcEngine.AppendNum(50);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(25);
       calcEngine.Other_fcns("percent");
       Assert.Equals(12.5, calcEngine.GetDisplay());
       calcEngine.Other_fcns("percent");
@@ -539,9 +539,9 @@ namespace Calculator
       Assert.Equals(312.5, calcEngine.GetDisplay());
       //(/)
       ClearCalcEngine();
-      calcEngine.appendNum(50);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(25);
+      calcEngine.AppendNum(50);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(25);
       calcEngine.Other_fcns("percent");
       Assert.Equals(12.5, calcEngine.GetDisplay());
       calcEngine.Solve();
@@ -553,11 +553,11 @@ namespace Calculator
     public void Misc_INVERSE()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(5);
+      calcEngine.AppendNum(5);
       calcEngine.Other_fcns("inverse");
       Assert.Equals(1 / 5, calcEngine.GetDisplay());
       ClearCalcEngine();
-      calcEngine.appendNum(0);
+      calcEngine.AppendNum(0);
       Assert.Equals(false, calcEngine.Other_fcns("inverse"));
       ClearCalcEngine();
     }
@@ -566,7 +566,7 @@ namespace Calculator
     public void Misc_BACKSPACE()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(45352.743);
+      calcEngine.AppendNum(45352.743);
       calcEngine.Other_fcns("backspace");
       Assert.Equals(45352.74, calcEngine.GetDisplay());
       calcEngine.Other_fcns("backspace");
@@ -599,21 +599,21 @@ namespace Calculator
       calcEngine.Other_fcns("open_paren");
       Assert.Equals(true, calcEngine.m_openParen);
       Assert.Equals(false, calcEngine.m_closeParen);
-      calcEngine.appendNum(1);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(-2);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(88);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(54);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(36);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(21);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(2);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(-13);
+      calcEngine.AppendNum(1);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(-2);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(88);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(54);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(36);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(21);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(2);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(-13);
       calcEngine.Other_fcns("close_paren");
       Assert.Equals(true, calcEngine.m_closeParen);
       Assert.Equals(false, calcEngine.m_openParen);
@@ -622,21 +622,21 @@ namespace Calculator
       calcEngine.Other_fcns("open_paren");
       Assert.Equals(true, calcEngine.m_openParen);
       Assert.Equals(false, calcEngine.m_closeParen);
-      calcEngine.appendNum(1);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(-2);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(88);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(54);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(36);
-      calcEngine.prepareOperation("subtract");
-      calcEngine.appendNum(21);
-      calcEngine.prepareOperation("divide");
-      calcEngine.appendNum(2);
-      calcEngine.prepareOperation("multiply");
-      calcEngine.appendNum(-13);
+      calcEngine.AppendNum(1);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(-2);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(88);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(54);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(36);
+      calcEngine.PrepareOperation("subtract");
+      calcEngine.AppendNum(21);
+      calcEngine.PrepareOperation("divide");
+      calcEngine.AppendNum(2);
+      calcEngine.PrepareOperation("multiply");
+      calcEngine.AppendNum(-13);
       calcEngine.Other_fcns("close_paren");
       Assert.Equals(true, calcEngine.m_closeParen);
       Assert.Equals(false, calcEngine.m_openParen);
@@ -648,11 +648,11 @@ namespace Calculator
     public void Misc_clearEntry()
     {
       ClearCalcEngine();
-      calcEngine.appendNum(83);
-      calcEngine.prepareOperation("add");
-      calcEngine.appendNum(17);
+      calcEngine.AppendNum(83);
+      calcEngine.PrepareOperation("add");
+      calcEngine.AppendNum(17);
       calcEngine.clear();
-      calcEngine.appendNum(27); //Chagne 17 to 27
+      calcEngine.AppendNum(27); //Chagne 17 to 27
       calcEngine.Solve();
       Assert.Equals(110, calcEngine.GetDisplay());
       calcEngine.Solve();
